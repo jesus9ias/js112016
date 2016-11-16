@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>localStorage with closure and functions</title>
+  </head>
+  <body>
+    <form name="myForm" onSubmit="event.preventDefault(); app.save()">
+      <label for="name">User Name</label>
+      <input id="name" type="text" />
+      <input type="submit" value="Guardar" />
+    </form>
+    <div>
+      <p id="user"></p>
+      <button onClick="app.delete()">Delete</button>
+      <button onClick="app.edit()">Edit</button>
+    <div>
+
+    <script type="text/javascript">
+      var app = (function() {
+
+        var myForm = document.getElementsByName("myForm")[0];
+        var userBlock = document.getElementsByTagName('div')[0];
+        var userName = document.getElementById('user');
+        var userInput = document.getElementById('name');
+
+        function showUsername() {
+          myForm.style.display = 'none';
+          userBlock.style.display = 'block';
+          userName.innerHTML = localStorage.username;
+        }
+
+        function hideUsername() {
+          myForm.style.display = 'block';
+          userBlock.style.display = 'none';
+          userName.innerHTML = '';
+          userInput.focus();
+        }
+
+        if (typeof localStorage.username !== 'undefined' && localStorage.username !== '') {
+          showUsername();
+        } else {
+          hideUsername();
+        }
+
+        return {
+          save: function() {
+            localStorage.username = userInput.value;
+            showUsername();
+          },
+          delete: function() {
+            userInput.value = '';
+            localStorage.removeItem("username");
+            hideUsername();
+          },
+          edit: function() {
+            userInput.value = localStorage.username;
+            hideUsername();
+          }
+        };
+      })();
+
+    </script>
+  </body>
+</html>
