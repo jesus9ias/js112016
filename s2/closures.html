@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Closure</title>
+  </head>
+  <body>
+    <p id="count"></p>
+    <button onClick="counter.plus()">+1</button>
+    <button onClick="counter.substract()">-1</button>
+
+    <script type="text/javascript">
+      var counter = (function() {
+
+        var total = 0;
+
+        var count = document.getElementById("count");
+
+        count.innerHTML = total;
+
+        function plus() {
+          count.innerHTML = ++total;
+        }
+
+        function substract() {
+          count.innerHTML = --total;
+        }
+
+        return {
+          plus: plus,
+          substract: substract
+        };
+      })();
+
+    </script>
+  </body>
+</html>

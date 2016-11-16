@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Cookies</title>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+
+      var cookies = document.cookie;
+
+      var name = prompt("Please enter your name");
+
+      if (name != null && cookies == null) {
+        console.log(name);
+        document.cookie = "name=" + name + "; expires=Thu, 19 Dec 2016 12:00:00 UTC";
+      }
+
+    </script>
+  </body>
+</html>
