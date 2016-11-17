@@ -13,3 +13,8 @@ var message = 'This is a big text that shows how to transform a text to an Array
 var arrayMessage = message.split(' ');
 console.log(arrayMessage);
 console.log(arrayMessage[3]);
+
+if (message.indexOf('th') > -1) {
+  console.log(message.indexOf('th'));
+  console.log('ok');
+}

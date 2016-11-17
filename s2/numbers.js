@@ -12,5 +12,5 @@ console.log(num2);
 
 
 console.log(Number("3"));
-console.log(parseInt("4R"));
+console.log(parseInt("4jk"));
 console.log(parseInt(9.8));
