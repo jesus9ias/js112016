@@ -4,15 +4,24 @@
   </head>
   <body>
 
+    <p id="name"></p>
+
     <script type="text/javascript">
 
       var cookies = document.cookie;
+      console.log(cookies);
 
-      var name = prompt("Please enter your name");
+      if (cookies === '') {
+        var name = prompt("Please enter your name");
 
-      if (name != null && cookies == null) {
-        console.log(name);
-        document.cookie = "name=" + name + "; expires=Thu, 19 Dec 2016 12:00:00 UTC";
+        if (name !== null) {
+          console.log(name);
+          document.cookie = "name=" + name + "; expires=Thu, 19 Dec 2016 12:00:00 UTC";
+          document.getElementById('name').innerHTML = name;
+        }
+      } else {
+        var name = cookies.split('=')[1];
+        document.getElementById('name').innerHTML = name;
       }
 
     </script>
