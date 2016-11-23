@@ -15,7 +15,6 @@ prompt.get(['opType'], function(err, operation) {
 
   if (operation.opType == 1) {
 
-
     log('Now write the operation and the numbers');
     log('1 - add');
     log('2 - substract');
