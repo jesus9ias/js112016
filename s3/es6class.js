@@ -16,12 +16,17 @@ class animal {
   }
 
   eat() {
-    this.energy++;
+    if (this.alive === true) {
+      this.energy++;
+      console.log(this.energy);
+    } else {
+      this._deathMessage();
+    }
   }
 
   move() {
     this.energy--;
-    if (this.energy === 0) {
+    if (this.energy <= 0) {
       this.kill();
     }
   }
@@ -30,9 +35,13 @@ class animal {
     this.alive = false;
     this._deathMessage();
   }
+
+  static sleep() {
+    console.log(this.name + ' is slepping');
+  }
 }
 
-let pet = new animal();
+let pet = new animal('Pinki');
 
 console.log(pet.myName());
 // console.log(pet.name);
@@ -42,6 +51,7 @@ pet.move();
 pet.move();
 pet.eat();
 
+animal.sleep();
 
 class cat extends animal {
   constructor(name) {
@@ -53,9 +63,21 @@ class cat extends animal {
     console.log('meooow!!');
   }
 
+  move() {
+    this.energy--;
+    if (this.energy <= 0 && this.lifes <= 0) {
+      this.kill();
+    }
+  }
+
   kill() {
-    this.alive = false;
-    this._deathMessage();
+    this.lifes--;
+    if (this.lifes > 0) {
+      console.log(`${this.name} has ${this.lifes} lifes yet`);
+    } else {
+      this.alive = false;
+      this._deathMessage();
+    }
   }
 }
 
@@ -66,4 +88,15 @@ myCat.eat();
 myCat.move();
 myCat.move();
 myCat.move();
-myCat.kill();
+myCat.move();
+myCat.move();
+myCat.move();
+myCat.move();
+myCat.eat();
+myCat.eat();
+myCat.eat();
+myCat.eat();
+myCat.eat();
+
+myCat.move();
+//myCat.kill();

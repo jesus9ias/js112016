@@ -10,7 +10,7 @@ log(x());
 log(num);
 
 //----
-for (var i = 0; i <= 5; i++) {
+for ( let i = 0; i <= 5; i++) {
   log(i);
 }
 log(i);

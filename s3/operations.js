@@ -1,6 +1,7 @@
 var prompt = require('prompt');
 var log = require('./logWrapper.js');
 var numbers = require('./numbers.js');
+var strings = require('./strings.js');
 
 
 log("What operation do you want to do?");
@@ -37,7 +38,17 @@ prompt.get(['opType'], function(err, operation) {
     });
   }
 
+  if (operation.opType == 2) {
+    log('Now write the operation and the text');
+    log('1 - split');
 
+    prompt.get(['op', 'text', 'param1'], function(err, txt) {
+      if (txt.op == 1) {
+        log(strings.split_text(txt.text, txt.param1));
+      }
+
+    });
+  }
 
   /*if (result.opType === 1) {
 
